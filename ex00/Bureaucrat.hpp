@@ -31,8 +31,8 @@ public:
         const char *what() const throw();
     };
 
-    int increment( int amount );
-    int decremnt( int amount );
+    void increment( void );
+    void decremnt( void );
 };
 
 std::ostream& operator<<(std::ostream& os, Bureaucrat& Bureaucrat);

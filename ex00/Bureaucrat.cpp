@@ -1,13 +1,13 @@
-#include <Bureaucrat.hpp>
+#include "Bureaucrat.hpp"
 #include <string>
 
 Bureaucrat::Bureaucrat(int grade, const std::string name) : _name(name) , _grade(grade)
 {
     std::cout << _name << "constractor been called" <<std::endl;
     if(grade > 150)
-        throw 
+        throw Bureaucrat::GradeTooHighException();
     else if(grade < 1)
-        throw GradeTooLowException
+        throw Bureaucrat::GradeTooLowException();
 }
 
 int Bureaucrat::getGrade( void )
@@ -28,10 +28,30 @@ Bureaucrat::~Bureaucrat( void )
 Bureaucrat::Bureaucrat( void ) : _name("Namles") , _grade(150)
 {
     std::cout << _name << "default constractor been called" << std::endl;
-}; 
+}
+
+Bureaucrat::Bureaucrat(Bureaucrat& copy) : _name(copy._name) , _grade(copy._grade)
+{
+    std::cout << _name << "copy constractor been called" << std::endl;
+}
 
 std::ostream& operator<<(std::ostream& os, Bureaucrat& b)
 {
 	os << b.getName() << ",  bureaucrat grade " << b.getGrade() << ".";
 	return (os);
 }
+
+void Bureaucrat::increment()
+{
+    if(_grade >= 150)
+        throw Bureaucrat::GradeTooHighException();
+    _grade++;
+}
+
+void Bureaucrat::decremnt( void )
+{
+    if(_grade - 1 < 1)
+        throw Bureaucrat::GradeTooLowException();
+    _grade--;
+}
+
