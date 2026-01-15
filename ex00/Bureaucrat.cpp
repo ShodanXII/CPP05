@@ -3,19 +3,19 @@
 
 Bureaucrat::Bureaucrat(int grade, const std::string name) : _name(name) , _grade(grade)
 {
-    std::cout << _name << " constractor been called" <<std::endl;
-    if(grade > 150)
+    if (grade < 1)
         throw Bureaucrat::GradeTooHighException();
-    else if(grade < 1)
+    else if (grade > 150)
         throw Bureaucrat::GradeTooLowException();
+    std::cout << _name << " constractor been called" <<std::endl;
 }
 
-int Bureaucrat::getGrade( void )
+int Bureaucrat::getGrade( void ) const 
 {
     return _grade;
 }
 
-std::string Bureaucrat::getName( void )
+std::string Bureaucrat::getName( void ) const 
 {
     return _name;  
 }
@@ -30,12 +30,12 @@ Bureaucrat::Bureaucrat( void ) : _name("Namles") , _grade(150)
     std::cout << _name << " Default constractor been called" << std::endl;
 }
 
-Bureaucrat::Bureaucrat(Bureaucrat& copy) : _name(copy._name) , _grade(copy._grade)
+Bureaucrat::Bureaucrat(const Bureaucrat& copy) : _name(copy._name) , _grade(copy._grade)
 {
     std::cout << _name << " copy constractor been called" << std::endl;
 }
 
-std::ostream& operator<<(std::ostream& os, Bureaucrat& b)
+std::ostream& operator<<(std::ostream& os, const Bureaucrat& b)
 {
 	os << b.getName() << ", bureaucrat grade " << b.getGrade() << ".";
 	return (os);
