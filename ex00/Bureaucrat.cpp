@@ -17,7 +17,7 @@ int Bureaucrat::getGrade( void )
 
 std::string Bureaucrat::getName( void )
 {
-    return _name;
+    return _name;  
 }
 
 Bureaucrat::~Bureaucrat( void )
