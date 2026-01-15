@@ -29,3 +29,9 @@ Bureaucrat::Bureaucrat( void ) : _name("Namles") , _grade(150)
 {
     std::cout << _name << "default constractor been called" << std::endl;
 }; 
+
+std::ostream& operator<<(std::ostream& os, Bureaucrat& b)
+{
+	os << b.getName() << ",  bureaucrat grade " << b.getGrade() << ".";
+	return (os);
+}
