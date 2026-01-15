@@ -45,13 +45,15 @@ void Bureaucrat::increment()
 {
 	if (_grade - 1 < 1)
 		throw (Bureaucrat::GradeTooHighException());
+    std::cout <<"increment" << std::endl;
 	_grade--;
 }
 
 void Bureaucrat::decremnt( void )
 {
-	if (_grade + 1 > 150)
+	if (_grade == 150)
 		throw (Bureaucrat::GradeTooLowException());
+    std::cout <<"decrement" << std::endl;
 	_grade++;
 }
 
