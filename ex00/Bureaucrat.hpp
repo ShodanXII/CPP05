@@ -1,6 +1,7 @@
 #pragma once 
 
 #include <string>
+#include <exception>
 #include <iostream>
 
 class Bureaucrat 
@@ -10,9 +11,13 @@ private:
     int _grade;
 public:
     Bureaucrat( void );
-    Bureaucrat(int grade, std::string name);
+    Bureaucrat(int grade, const std::string name);
     Bureaucrat( Bureaucrat& copy);
-    std::string getname( void );
-    int    getgrade( void );
+    Bureaucrat& operator=(const Bureaucrat& copy);
+    ~Bureaucrat( void );
+    std::string getName( void );
+    int    getGrade( void );
     void set(int grade, std::string name);
+    void GradeTooLowException( void );
+    void GradeTooHighException( void );
 };
