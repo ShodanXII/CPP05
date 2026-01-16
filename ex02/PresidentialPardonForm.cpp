@@ -1,17 +1,14 @@
-#pragma once
-
+#include "PresidentialPardonForm.hpp"
 #include "AForm.hpp"
 
-class	PresidentialPardonForm : public AForm
+PresidentialPardonForm::PresidentialPardonForm( void ) :
+AForm("PresidentialPardonForm", 25, 5), target("Default_target")
 {
-	private:
-		std::string	target;
-	public:
-		PresidentialPardonForm();
-		PresidentialPardonForm(const std::string& _target);
-		PresidentialPardonForm(const PresidentialPardonForm& copy);
-		PresidentialPardonForm&	operator=(const PresidentialPardonForm& copy);
-		~PresidentialPardonForm();
+    std::cout << " PresidentialPardonForm default constractor been called" << std::endl;
+}
 
-		void	execute(Bureaucrat const & executor) const;
-};
+PresidentialPardonForm::PresidentialPardonForm( const std::string& _target) : AForm("PresidentialPardonForm", 25, 5), target(_target)
+{
+    std::cout << AForm::getName() << " constractor been called from PresidentialPardonForm" << std::endl;
+}
+
