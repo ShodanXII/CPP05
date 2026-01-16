@@ -3,7 +3,7 @@
 #include <iostream>
 #include <string>
 
-class Form;
+class AForm;
 
 class Bureaucrat 
 {
@@ -32,7 +32,7 @@ public:
     };
 
     void increment( void );
-    void		signForm(Form& f) const;
+    void		signForm(AForm& f) const;
     void decremnt( void );
 };
 
