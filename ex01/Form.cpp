@@ -77,3 +77,9 @@ Form& Form::operator=(const Form& copy)
     return (*this);
 }
 
+void	Form::beSigned(const Bureaucrat& b)
+{
+	if (b.getGrade() > _signed)
+		throw (Form::GradeTooLowException());
+	_signed = true;
+}
