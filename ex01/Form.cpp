@@ -1,20 +1,31 @@
 #include "Form.hpp"
 
-Form::Form( void ) : _name("Nameless") , _signed(false), _signedgrade(150), _excutgrade(150)
+Form::Form(void)
+    : _name("Nameless"),
+      _signed(false),
+      _excutgrade(150),
+      _signedgrade(150)
 {
     std::cout << _name << " Default constractor called" << std::endl;
 }
 
-Form::Form(std::string name, int excutgrade, int signedgrade) : _name(name), _signedgrade(signedgrade), _excutgrade(excutgrade), _signed(false)
+Form::Form(std::string name, int excutgrade, int signedgrade)
+    : _name(name),
+      _signed(false),
+      _excutgrade(excutgrade),
+      _signedgrade(signedgrade)
 {
-    if (_signed < 1 || _excutgrade < 1)
+    if (_signedgrade < 1 || _excutgrade < 1)
         throw (Form::GradeTooHighException());
     else if (_signedgrade > 150 || _excutgrade > 150)
         throw (Form::GradeTooLowException());
-    std::cout << _name <<" constructor called" << std::endl;
 }
 
-Form::Form(const Form& copy) : _name(copy._name), _excutgrade(copy._excutgrade), _signed(false), _signedgrade(copy._signedgrade)
+Form::Form(const Form& copy)
+    : _name(copy._name),
+      _signed(copy._signed),
+      _excutgrade(copy._excutgrade),
+      _signedgrade(copy._signedgrade)
 {
     std::cout << _name << " copy constractor been called " << std::endl;
 }
@@ -77,11 +88,11 @@ Form& Form::operator=(const Form& copy)
     return (*this);
 }
 
-void	Form::beSigned(const Bureaucrat& b)
+void Form::beSigned(const Bureaucrat& b)
 {
-	if (b.getGrade() > _signed)
-		throw (Form::GradeTooLowException());
-	_signed = true;
+    if (b.getGrade() > _signedgrade)
+        throw (Form::GradeTooLowException());
+    _signed = true;
 }
 
 void	Bureaucrat::signForm(Form& f) const
