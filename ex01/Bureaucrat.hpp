@@ -4,6 +4,8 @@
 #include <string>
 #include <strstream>
 
+class Form;
+
 class Bureaucrat 
 {
 private:
@@ -31,6 +33,7 @@ public:
     };
 
     void increment( void );
+    void		signForm(Form& f) const;
     void decremnt( void );
 };
 

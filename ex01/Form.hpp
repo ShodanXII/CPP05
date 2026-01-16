@@ -35,7 +35,6 @@ public:
     };
 
     void beSigned(const Bureaucrat &b);
-    // void signForm();
 };
 
 std::ostream&	operator<<(std::ostream& os, const Form& f);
