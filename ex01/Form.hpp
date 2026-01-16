@@ -14,7 +14,7 @@ public:
     Form();
     Form(std::string name, int excutgrade, int signedgrade);
     Form(const Form& copy);
-    Form &operator=(const Form &copy);
+    Form& operator=(const Form& copy);
     ~Form();
 
 	std::string	getName() const;

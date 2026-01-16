@@ -69,7 +69,11 @@ std::ostream&	operator<<(std::ostream& os, const Form& f)
     return os;
 }
 
-Form &operator=(const Form &copy)
+Form& Form::operator=(const Form& copy)
 {
-    
+    if (this != &copy)
+        _signed = copy._signed;
+    std::cout << "Form Copy assignment operator called" << std::endl;
+    return (*this);
 }
+
