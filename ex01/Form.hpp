@@ -1,15 +1,38 @@
 #pragma once
 
+#include <string>
+#include <iostream>
+#include "Bureaucrat.hpp"
+
 class Form
 {
+private:
+    const std::string _name;
+    bool _signed;
+    const int _excutgrade;
+    const int _signedgrade;
 public:
     Form();
-    Form(Form &&) = default;
-    Form(const Form &) = default;
-    Form &operator=(Form &&) = default;
-    Form &operator=(const Form &) = default;
+    Form(std::string name, int excutgrade, int signedgrade);
+    Form(Form& copy);
+    Form &operator=(const Form &copy);
     ~Form();
 
-private:
+	std::string	getName() const;
+	bool		getIsSigned() const;
+	int			getSignGrade() const;
+	int			getExecGrade() const;
 
+    class	GradeTooHighException : public std::exception
+    {
+        public:
+            const char	*what() const throw();
+    };
+    class	GradeTooLowException : public std::exception
+    {
+        public:
+            const char	*what() const throw();
+    };
 };
+
+std::ostream&	operator<<(std::ostream& os, const Form& f);
