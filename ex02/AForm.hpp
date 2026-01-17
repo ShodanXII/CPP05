@@ -35,7 +35,11 @@ public:
         public:
             const char	*what() const throw();
     };
-
+    class	NotSignedException : public std::exception
+    {
+        public:
+            const char	*what() const throw();
+    };
     void beSigned(const Bureaucrat &b);
 };
 
