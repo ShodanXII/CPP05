@@ -107,3 +107,8 @@ void	Bureaucrat::signForm(AForm& f) const
 		std::cout << _name << " couldn’t sign " << f.getName() << " because " << e.what() << "." << std::endl;
 	}
 }
+
+const char	*AForm::NotSignedException::what() const throw()
+{
+	return ("Form Not Signed!");
+}

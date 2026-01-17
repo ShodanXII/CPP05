@@ -34,6 +34,7 @@ public:
     void increment( void );
     void		signForm(AForm& f) const;
     void decremnt( void );
+    void		executeForm(AForm const & form) const;
 };
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& b);
