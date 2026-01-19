@@ -10,4 +10,5 @@ public:
     Intern( const Intern& copy);
     ~Intern( void );
     Intern& operator=(const Intern& copy);
+    AForm	*makeForm(std::string name, std::string target);
 };
