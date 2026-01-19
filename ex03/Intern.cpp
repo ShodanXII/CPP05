@@ -5,20 +5,26 @@
 
 Intern::Intern( void )
 {
-    std::cout << " Intern default constractor been called" << std::endl;
+    std::cout << "Intern default constractor been called" << std::endl;
 }
 
 Intern::Intern( const Intern& copy)
 {
     *this = copy;
-    std::cout << " Intern copy constractor been called" << std::endl;
+    std::cout << "Intern copy constractor been called" << std::endl;
 }
 
 Intern::~Intern( void )
 {
-    std::cout << " Intern default destractor been called" << std::endl;
+    std::cout << "Intern default destractor been called" << std::endl;
 }
 
+Intern& Intern::operator=( const Intern& copy)
+{
+	(void)copy;
+	std::cout << "Intern copy assignment constractor " << std::endl;
+	return *this;
+}
 
 static	AForm	*create_Shrubbery(const std::string& target)
 {

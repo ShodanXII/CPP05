@@ -1,54 +1,47 @@
+#include <iostream>
+#include "Intern.hpp"
 #include "Bureaucrat.hpp"
-#include "ShrubberyCreationForm.hpp"
-#include "RobotomyRequestForm.hpp"
-#include "PresidentialPardonForm.hpp"
 
-int main(void)
+int main()
 {
-    try
-    {
-        // Create bureaucrats
-        Bureaucrat boss(1, "Boss");
-        Bureaucrat intern(150, "Intern");
-        
-        std::cout << boss << std::endl;
-        std::cout << intern << std::endl;
-        
-        // Create forms with different targets
-        ShrubberyCreationForm shrubbery("home");
-        RobotomyRequestForm robotomy("Bender");
-        PresidentialPardonForm pardon("Arthur");
-        
-        std::cout << "\n" << shrubbery << std::endl;
-        std::cout << robotomy << std::endl;
-        std::cout << pardon << std::endl;
-        
-        // Test 1: ShrubberyCreationForm
-        std::cout << "\n--- Testing ShrubberyCreationForm ---" << std::endl;
-        boss.signForm(shrubbery);
-        boss.executeForm(shrubbery);
-        
-        // Test 2: RobotomyRequestForm  
-        std::cout << "\n--- Testing RobotomyRequestForm ---" << std::endl;
-        boss.signForm(robotomy);
-        boss.executeForm(robotomy);
-        boss.executeForm(robotomy);  // Try again for 50% chance
-        
-        // Test 3: PresidentialPardonForm
-        std::cout << "\n--- Testing PresidentialPardonForm ---" << std::endl;
-        boss.signForm(pardon);
-        boss.executeForm(pardon);
-        
-        // Test 4: Error - unsigned form
-        std::cout << "\n--- Testing Error: Unsigned Form ---" << std::endl;
-        PresidentialPardonForm pardon2("Ford");
-        boss.executeForm(pardon2);  // Should throw exception
-        
+    Intern someRandomIntern;
+    Bureaucrat boss(1, "Boss");
+
+    AForm* f1 = NULL;
+    AForm* f2 = NULL;
+    AForm* f3 = NULL;
+    AForm* f4 = NULL;
+
+    try {
+        f1 = someRandomIntern.makeForm("shrubbery creation", "home");
+        f2 = someRandomIntern.makeForm("robotomy request", "Bender");
+        f3 = someRandomIntern.makeForm("presidential pardon", "Marvin");
+        f4 = someRandomIntern.makeForm("unknown form", "Nobody");
     }
-    catch (const std::exception& e)
-    {
-        std::cout << "Error: " << e.what() << std::endl;
+    catch (const std::exception& e) {
+        std::cout << "Exception: " << e.what() << std::endl;
     }
-    
-    return (0);
+
+    if (f1)
+    {
+        boss.signForm(*f1);
+        boss.executeForm(*f1);
+        delete f1;
+    }
+    if (f2)
+    {
+        boss.signForm(*f2);
+        boss.executeForm(*f2);
+        delete f2;
+    }
+    if (f3)
+    {
+        boss.signForm(*f3);
+        boss.executeForm(*f3);
+        delete f3;
+    }
+    if (f4)
+        delete f4;
+
+    return 0;
 }
