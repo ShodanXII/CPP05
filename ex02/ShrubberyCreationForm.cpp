@@ -45,10 +45,6 @@ void ShrubberyCreationForm::execute(Bureaucrat const &executer) const
     
     std::string filename = _target + "_shrubbery";
     std::ofstream file(filename.c_str());
-    
-    if (!file.is_open())
-        throw std::runtime_error("Could not open file for writing");
-    
     file << "       _-_\n";
     file << "    /~~   ~~\\\n";
     file << " /~~         ~~\\\n";

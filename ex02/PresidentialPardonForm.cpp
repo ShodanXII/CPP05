@@ -38,7 +38,7 @@ PresidentialPardonForm::~PresidentialPardonForm()
 void PresidentialPardonForm::execute(Bureaucrat const & executor) const
 {
     if (!getIsSigned())
-        throw std::runtime_error("PresidentialPardonForm not signed");
+        throw AForm::NotSignedException();
     if (executor.getGrade() > getExecGrade())
         throw AForm::GradeTooLowException();
     std::cout << target << " has been pardoned by Zaphod Beeblebrox." << std::endl;
